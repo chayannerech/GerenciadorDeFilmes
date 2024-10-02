@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap";
+@import "bootstrap-icons";
+
+body {
+  // background: -webkit-linear-gradient(to right, #faf3f4, #c2c2fb);
+  // background: linear-gradient(to top, #faf3f4, #c2c2fb);
+
+  background-color:rgb(64, 77, 90);
+}

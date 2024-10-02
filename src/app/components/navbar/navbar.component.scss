@@ -1,0 +1,59 @@
+a{
+  text-decoration: none;
+}
+
+.app-texto-navbar {
+  background: linear-gradient(90deg, #ff7a18, #f1013d, #5fa7e2);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 38px;
+}
+
+select {
+  display: none;
+}
+
+.btn-icon {
+  background: linear-gradient(90deg, #ff8a37, #ff3568, #79c3ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  border: none;
+  font-size: 21px;
+  padding: 10px;
+  cursor: pointer;
+  vertical-align: 0;
+}
+
+.bi-person-circle {
+  color: red($color: #000000);
+  width: 1000px;
+}
+
+.select-dropdown {
+  position: absolute;
+  right: 127px;
+  background-color: rgb(216, 229, 255);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 45px;
+  z-index: 1000;
+  width: 160px;
+  font-size: 13px;
+  font-weight:500;
+}
+
+.select-dropdown a {
+  display: block;
+  color: #000;
+  text-decoration: none;
+}
+
+.select-dropdown a:hover {
+  color: rgb(89, 35, 238);
+}
+
+.app-nav-itens{
+  position: relative;
+  display: flex;
+  margin-left: auto;
+}

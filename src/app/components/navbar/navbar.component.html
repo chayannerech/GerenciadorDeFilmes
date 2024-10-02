@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg bg-dark py-1">
+  <div class="container">
+    <a class="d-flex align-items-center" href="#">
+      <img src="filme-icon.png" [width]="35" alt="claquete">
+      <span class="app-texto-navbar fw-bold mx-4">MDB</span>
+    </a>
+    <button
+      class="navbar-toggler text-white border-white"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      &#9776;
+    </button>
+    <div class="navbar-collapse collapse">
+      <div *ngIf="!navbarTogglerVisivel" class="app-nav-itens">
+        <button
+          (click)="mostrarDropdown()"
+          class="nav-item btn btn-icon"
+          title="Adicionar"
+        >
+          <i class="bi bi-plus-circle"></i>
+        </button>
+
+        <div
+          class="select-dropdown px-lg-3"
+          [style.display]="seletorVisivel ? 'block' : 'none'"
+        >
+          <a href="#" data-value="novoFilme" (click)="ocultarDropdown()">Adicionar novo filme</a>
+          <a href="#" data-value="novaSerie" (click)="ocultarDropdown()">Adicionar nova série</a>
+        </div>
+
+        <button
+          title="Pesquisar"
+          class="btn btn-icon">
+          <i class="bi bi-search"></i>
+        </button>
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle btn-icon"
+            href="#"
+            data-bs-toggle="dropdown"
+            title="Perfil"
+          >
+            <i class="bi bi-person-circle btn-icon"></i>
+          </a>
+
+          <ul class="dropdown-menu">
+            <li> <a class="dropdown-item text-center text-bg-secondary" href="#">Registrar</a></li>
+            <li> <a class="dropdown-item text-center text-bg-secondary" href="#">Entrar</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -23,7 +23,7 @@ export class FilmeService {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Autorization: environment.API_KEY,
+        Authorization: environment.API_KEY,
       }
     }
   }
