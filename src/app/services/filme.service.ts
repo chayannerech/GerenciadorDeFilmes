@@ -18,6 +18,10 @@ export class FilmeService {
     return this.http.get<any>(urlCompleto, this.obterHeadersDeAutorizacao());
   }
 
+  public selecionarDetalhesPorUrl(url: string): Observable<any> {
+    return this.http.get<any>(url);
+  }
+
   private obterHeadersDeAutorizacao() {
     return {
       method: 'GET',
