@@ -1,0 +1,73 @@
+.app-texto-filmes-preferidos {
+  text-align: center;
+  margin: 5.4%;
+  margin-top: 5%;
+  margin-bottom: 0;
+  padding: 5px;
+  border: 0.1rem solid white;
+  border-radius: 10px;
+
+  border-color: #ffffff62;
+
+  background: linear-gradient(90deg, #ff7a18, #ff7a18, #f1013d, #2888d6d5, #2888d6);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 28px;
+}
+
+.app-mostrar-cards {
+  gap: 0;
+  margin: 0% 5%;
+  justify-content: center;
+}
+
+.app-botao-mais-resultados {
+  border-color: #ffffff62;
+
+  background: linear-gradient(90deg, #943e00, #8b0023, #001cb9);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 18px;
+  font-weight:500;
+  width: 190px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Colocar cards lado a lado */
+  gap: 10px; /* Espaço entre os cards */
+}
+
+.grid-item {
+  width: 100%;
+}
+
+@media (max-width: 315px) {
+  .app-config-col {
+    width: 100%;
+  }
+}
+
+@media (width > 315px) {
+  .app-config-col {
+    width: 50%;
+  }
+}
+
+@media (width > 576px ) {
+  .app-config-col {
+    width: 30%;
+  }
+}
+
+@media (width > 767px ) {
+  .app-config-col {
+    width: 25%;
+  }
+}
+
+@media (width > 991px) {
+  .app-config-col {
+    width: 20%;
+  }
+}

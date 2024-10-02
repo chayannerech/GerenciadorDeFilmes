@@ -21,6 +21,7 @@
           (click)="mostrarDropdown()"
           class="nav-item btn btn-icon"
           title="Adicionar"
+          id="select-icon"
         >
           <i class="bi bi-plus-circle"></i>
         </button>
@@ -28,6 +29,7 @@
         <div
           class="select-dropdown px-lg-3"
           [style.display]="seletorVisivel ? 'block' : 'none'"
+          #dropdownMenu
         >
           <a href="#" data-value="novoFilme" (click)="ocultarDropdown()">Adicionar novo filme</a>
           <a href="#" data-value="novaSerie" (click)="ocultarDropdown()">Adicionar nova série</a>

@@ -1,5 +1,7 @@
 export interface Filme {
   id: number;
-  nome: string;
-  urlSprite: string;
+  titulo: string;
+  lancamento: string;
+  urlImagem: string;
+  porcentagemNota: string;
 }
