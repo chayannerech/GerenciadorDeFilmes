@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FilmeService } from './services/filme.service';
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { ListagemComponent } from "./components/listagem/listagem.component";
+import { ListagemComponent } from './components/listagem/listagem.component';
 
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';

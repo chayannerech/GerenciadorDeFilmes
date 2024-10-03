@@ -22,6 +22,12 @@ export class FilmeService {
     return this.http.get<any>(url);
   }
 
+  public selecionarDetalhesFilmePorId(id: any): Observable<any> {
+    const urlCompleto = `${this.urlApi}/${id}?append_to_response=videos,credits&language=pt-BR`;
+
+    return this.http.get<any>(urlCompleto, this.obterHeadersDeAutorizacao());
+  }
+
   private obterHeadersDeAutorizacao() {
     return {
       method: 'GET',

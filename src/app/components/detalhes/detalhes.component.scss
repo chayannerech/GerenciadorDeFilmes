@@ -1,0 +1,115 @@
+#scrollbar-customizado {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #dddddd;
+    border-radius: 5px;
+  }
+}
+
+.app-porcentagem-nota {
+  background-color: #081c22;
+  color: #f3f3f3;
+
+  width: 50px;
+  height: 48px;
+
+  border: 2px solid transparent;
+  border-radius: 50%;
+  animation: preencherBorda 1.3s linear forwards;
+
+  .app-valor-porcentagem {
+    font-size: 20px;
+
+    &::after {
+      content: "%";
+
+      font-size: 9px;
+    }
+  }
+}
+
+@keyframes preencherBorda {
+  0% {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  25% {
+    border-top-color: currentColor;
+  }
+  50% {
+    border-right-color: currentColor;
+  }
+  75% {
+    border-bottom-color: currentColor;
+  }
+  100% {
+    border-left-color: currentColor;
+  }
+}
+
+.app-borda-nota-mais-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-media {
+  border-color: #ffed23;
+}
+
+.app-borda-nota-alta {
+  border-color: rgb(0, 196, 0);
+}
+
+
+.app-informacoes {
+  display: flex;
+  color:rgb(185, 185, 185);
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-sinopse {
+  text-align: justify;
+  max-width: 90%;
+  margin: 0 auto;
+  font-size: 94%;
+}
+
+.app-titulo-detalhes {
+  background: linear-gradient(90deg, #ff7a18, #ff7a18, #f1013d, #2888d6d5, #2888d6);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@media (width < 768px) {
+  .app-poster {
+    display: flex;
+  }
+  .app-config-col {
+    width: 33.5%;
+  }
+}
+
+@media (width < 399px) {
+  .app-config-col {
+    width: 50%;
+  }
+}
+
+@media (width < 273px) {
+  .app-config-col {
+    width: 100%;
+  }
+}

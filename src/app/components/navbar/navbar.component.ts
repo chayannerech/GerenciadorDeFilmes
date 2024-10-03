@@ -18,12 +18,7 @@ export class NavbarComponent implements AfterViewInit {
   constructor(private renderer: Renderer2, private cdref: ChangeDetectorRef, private elementRef: ElementRef) {}
 
   ngAfterViewInit() {
-    this.verificaTamanhoDaTela();
     this.cdref.detectChanges();
-
-    this.renderer.listen('window', 'resize', () => {
-      this.verificaTamanhoDaTela();
-    });
 
     this.renderer.listen('document', 'click', (event: Event) => {
       const clickedInsideDropdown = this.dropdownMenu.nativeElement.contains(event.target);
@@ -35,15 +30,6 @@ export class NavbarComponent implements AfterViewInit {
       else
         !this.mostrarDropdown;
     });
-  }
-
-  verificaTamanhoDaTela() {
-    this.screenWidth = window.innerWidth;
-    if (this.screenWidth > 992) {
-      this.navbarTogglerVisivel = false;
-    } else {
-      this.navbarTogglerVisivel = true;
-    }
   }
 
   mostrarDropdown() {

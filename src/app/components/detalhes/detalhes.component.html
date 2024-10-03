@@ -1,0 +1,73 @@
+<div *ngIf="detalhes">
+  <div>
+    <main class="container py-5">
+      <section aria-label="Detalhes do Filme" class="row g-3">
+        <div class="app-poster col-md-4 col-lg-3 justify-content-center">
+          <img
+            [src]="detalhes.urlPoster"
+            alt="Poster de {{ detalhes.titulo }}"
+            class="img-fluid rounded-3"
+          />
+        </div>
+
+        <div class="app-informacoes col-md-8 col-lg-9">
+          <header class="text-center">
+            <h1 class="app-titulo-detalhes">{{ detalhes.titulo }}</h1>
+
+            <div class="d-flex justify-content-center ">
+              <span class="d-flex align-items-center gap-1">
+                •
+                <span>{{ detalhes.generos }}</span>
+                •
+              </span>
+            </div>
+
+            <div>
+              <small>{{ detalhes.lancamento }}</small>
+            </div>
+
+            <article class="mt-5">
+              <h4>Sinopse</h4>
+              <p class="app-sinopse">
+                {{ detalhes.sinopse }}
+              </p>
+            </article>
+
+            <div class="d-flex justify-content-center align-items-center gap-3 mt-5">
+              <span
+                [ngClass]="mapearCorDaNota(detalhes.porcentagemNota)"
+                class="app-porcentagem-nota d-flex justify-content-center align-items-center rounded-circle"
+              >
+                <span class="app-valor-porcentagem fw-semibold">{{ detalhes.porcentagemNota }}</span>
+              </span>
+              <strong>Avaliação dos Usuários</strong>
+            </div>
+          </header>
+        </div>
+
+        <div>
+          <article class="ratio ratio-16x9 mt-5">
+            <iframe
+              [attr.aria-label]="'Trailer de ' + detalhes.titulo"
+              [src]="detalhes.videos[0].sourceUrl"
+              title="Trailer"
+              type="video/mp4"
+              class="rounded-3"
+            ></iframe>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<section *ngIf="detalhes" class="container my-4">
+  <h4>Elenco Principal</h4>
+  <div id="scrollbar-customizado" class="row flex-nowrap overflow-x-scroll g-2 pb-3 mt-3">
+    <div *ngFor="let membro of detalhes.elencoPrincipal" class="app-config-col col-md-3 col-lg-2">
+      <app-elenco-principal
+        [membro]="membro"
+      ></app-elenco-principal>
+    </div>
+  </div>
+</section>

@@ -1,11 +1,12 @@
 import { Component, Input, input } from '@angular/core';
-import { Filme } from '../../../models/filmes/filme';
+import { Filme } from '../../../models/filme';
 import { NgClass } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-card-filme',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, RouterLink],
   templateUrl: './card-filme.component.html',
   styleUrl: './card-filme.component.scss'
 })

@@ -2,17 +2,19 @@
   text-align: center;
   margin: 5.4%;
   margin-top: 5%;
-  margin-bottom: 0;
+  margin-bottom: 1%;
   padding: 5px;
-  border: 0.1rem solid white;
+  border: 0.1rem solid #ffffff62;
   border-radius: 10px;
-
-  border-color: #ffffff62;
-
   background: linear-gradient(90deg, #ff7a18, #ff7a18, #f1013d, #2888d6d5, #2888d6);
   -webkit-background-clip: text;
   color: transparent;
   font-size: 28px;
+}
+
+.app-texto-filmes-preferidos:hover {
+  transform: scale(1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .app-mostrar-cards {
@@ -30,16 +32,6 @@
   font-size: 18px;
   font-weight:500;
   width: 190px;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Colocar cards lado a lado */
-  gap: 10px; /* Espaço entre os cards */
-}
-
-.grid-item {
-  width: 100%;
 }
 
 @media (max-width: 315px) {
@@ -66,8 +58,19 @@
   }
 }
 
-@media (width > 991px) {
+@media (width > 877px ) {
   .app-config-col {
     width: 20%;
+  }
+}
+
+@media (width > 991px) {
+  .app-config-col {
+    width: 18%;
+  }
+  .app-texto-filmes-preferidos {
+    margin: 8%;
+    margin-top: 5%;
+    margin-bottom: 1%;
   }
 }

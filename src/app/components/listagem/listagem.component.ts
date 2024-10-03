@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Filme } from '../../models/filmes/filme';
+import { Filme } from '../../models/filme';
 import { FilmeService } from '../../services/filme.service';
-import { converterParaTitleCase } from '../../util/converter-para-title-case';
 import { formatDate, NgForOf, NgIf } from '@angular/common';
 import { CardFilmeComponent } from './card-filme/card-filme.component';
 
