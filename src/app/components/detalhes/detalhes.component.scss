@@ -113,3 +113,26 @@
     width: 100%;
   }
 }
+
+.app-voltar {
+  justify-content: center;
+  text-decoration: none;
+}
+
+.app-btn-voltar {
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid purple;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 130%;
+  color: purple;
+
+  width: 200px;
+  height: 40px;
+}
+
+.app-btn-voltar:hover {
+  background: -webkit-linear-gradient(to right, #faf3f4, #c2c2fb);
+  background: linear-gradient(to right, #b9865c52, #a7282849, #2042da2f);
+}

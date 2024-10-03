@@ -32,6 +32,11 @@
   font-size: 18px;
   font-weight:500;
   width: 190px;
+  margin-bottom: 30px;
+}
+
+.app-botao-mais-resultados:hover {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 315px) {

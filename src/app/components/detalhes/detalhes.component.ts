@@ -1,7 +1,7 @@
 import { formatDate, NgClass, NgForOf, NgIf } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { DetalhesFilme } from "../../models/detalhes";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterLink } from "@angular/router";
 import { FilmeService } from "../../services/filme.service";
 import { DomSanitizer } from "@angular/platform-browser";
 import { MembroElenco } from "../../models/membro-elenco";
@@ -12,7 +12,7 @@ import { ElencoPrincipalComponent } from "../elenco-principal/elenco-principal.c
 @Component({
   selector: 'app-detalhes',
   standalone: true,
-  imports: [NgIf, NgClass, NgForOf, ElencoPrincipalComponent],
+  imports: [NgIf, NgClass, NgForOf, ElencoPrincipalComponent, RouterLink],
   templateUrl: './detalhes.component.html',
   styleUrl: './detalhes.component.scss',
 })
