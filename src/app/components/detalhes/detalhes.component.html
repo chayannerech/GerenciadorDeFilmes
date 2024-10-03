@@ -34,6 +34,23 @@
             </article>
 
             <div class="d-flex justify-content-center align-items-center gap-3 mt-5">
+              <button
+                *ngIf="!detalhes.favorito"
+                (click)="alterarStatusFavorito(detalhes.id)"
+                title="Favoritar"
+                class="btn btn-outline-dark rounded-circle py-1"
+              >
+                <i class="bi bi-heart fs-3 m-auto"></i>
+              </button>
+              <button
+                *ngIf="detalhes.favorito"
+                (click)="alterarStatusFavorito(detalhes.id)"
+                title="Remover favorito"
+                class="btn btn-outline-dark rounded-circle py-1"
+              >
+                <i class="bi bi-heart-fill fs-3 m-auto"></i>
+              </button>
+
               <span
                 [ngClass]="mapearCorDaNota(detalhes.porcentagemNota)"
                 class="app-porcentagem-nota d-flex justify-content-center align-items-center rounded-circle"
@@ -61,10 +78,10 @@
   </div>
 </div>
 
-<section *ngIf="detalhes" class="container my-4">
+<section *ngIf="filmePossuiElenco(detalhes!)" class="container my-4">
   <h4>Elenco Principal</h4>
   <div id="scrollbar-customizado" class="row flex-nowrap overflow-x-scroll g-2 pb-3 mt-3">
-    <div *ngFor="let membro of detalhes.elencoPrincipal" class="app-config-col col-md-3 col-lg-2">
+    <div *ngFor="let membro of detalhes?.elencoPrincipal" class="app-config-col col-md-3 col-lg-2">
       <app-elenco-principal
         [membro]="membro"
       ></app-elenco-principal>

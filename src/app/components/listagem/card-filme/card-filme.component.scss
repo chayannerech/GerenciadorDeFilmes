@@ -38,12 +38,12 @@
   box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
 }
 
-.app-titulo-card {
-  transition: color 0.3s ease;
-}
-
 .app-card-filme:hover .app-titulo-card {
   color: #6c20c2;
+}
+
+.app-titulo-card {
+  transition: color 0.3s ease;
 }
 
 .app-porcentagem-nota {

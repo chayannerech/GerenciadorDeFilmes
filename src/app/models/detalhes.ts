@@ -9,9 +9,8 @@ export interface DetalhesFilme {
   porcentagemNota: string;
   urlPoster: string;
   urlFundo: string;
-
   generos: string;
-
   videos: VideoFilme[];
   elencoPrincipal: MembroElenco[];
+  favorito: boolean;
 }

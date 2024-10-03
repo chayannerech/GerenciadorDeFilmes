@@ -8,6 +8,8 @@ import { MembroElenco } from "../../models/membro-elenco";
 import { VideoFilme } from "../../models/video";
 import { GeneroFilme } from "../../models/genero";
 import { ElencoPrincipalComponent } from "../elenco-principal/elenco-principal.component";
+import { LocalStorageService } from "../../services/local-storage.service";
+import { FilmeFavorito } from "../../models/favoritos";
 
 @Component({
   selector: 'app-detalhes',
@@ -22,6 +24,7 @@ export class DetalhesComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private filmeService: FilmeService,
+    private localStorageService: LocalStorageService,
     private domSanitizer: DomSanitizer
   ) {}
 
@@ -37,6 +40,26 @@ export class DetalhesComponent implements OnInit {
     this.filmeService.selecionarDetalhesFilmePorId(id).subscribe((f) => {
       this.detalhes = this.mapearDetalhesFilme(f);
     });
+  }
+
+  public alterarStatusFavorito(id: number) {
+    if (!this.detalhes) return;
+
+    if (this.localStorageService.favoritoJaExiste(id)) {
+      this.detalhes.favorito = false;
+
+      this.localStorageService.removerFavorito(id);
+    } else {
+      this.detalhes.favorito = true;
+
+      const novoFavorito: FilmeFavorito = {
+        id: id,
+        titulo: this.detalhes.titulo,
+        urlImagem: this.detalhes.urlPoster,
+      };
+
+      this.localStorageService.salvarFavorito(novoFavorito);
+    }
   }
 
   public mapearCorDaNota(porcentagemNota: string): string {
@@ -65,6 +88,7 @@ export class DetalhesComponent implements OnInit {
 
       videos: obj.videos.results.map((v: any) => this.mapearVideoFilme(v)),
       elencoPrincipal: obj.credits.cast.map(this.mapearElencoFilme),
+      favorito: this.localStorageService.favoritoJaExiste(obj.id)
     };
   }
 
@@ -83,6 +107,7 @@ export class DetalhesComponent implements OnInit {
       ),
     };
   }
+
   private mapearElencoFilme(obj: any): MembroElenco {
     return {
       id: obj.id,
@@ -90,5 +115,10 @@ export class DetalhesComponent implements OnInit {
       papel: obj.character,
       urlImagem: 'https://image.tmdb.org/t/p/w300' + obj.profile_path,
     };
+  }
+
+  public filmePossuiElenco(detalhes: DetalhesFilme) : boolean{
+    console.log(detalhes.elencoPrincipal);
+    return detalhes.videos[0] != null
   }
 }

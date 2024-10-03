@@ -3,30 +3,36 @@ import { Filme } from '../../models/filme';
 import { FilmeService } from '../../services/filme.service';
 import { formatDate, NgForOf, NgIf } from '@angular/common';
 import { CardFilmeComponent } from './card-filme/card-filme.component';
+import { LocalStorageService } from '../../services/local-storage.service';
+import { FilmesFavoritosComponent } from '../favoritos/favoritos.component';
+import { FilmeFavorito } from '../../models/favoritos';
 
 @Component({
   selector: 'app-listagem',
   standalone: true,
-  imports: [NgForOf, CardFilmeComponent, NgIf],
+  imports: [NgForOf, CardFilmeComponent, NgIf, FilmesFavoritosComponent],
   templateUrl: './listagem.component.html',
   styleUrl: './listagem.component.scss'
 })
 
 export class ListagemComponent implements OnInit{
   public filmes: Filme[];
+  public filmesFavoritos: FilmeFavorito[];
   public carregandoListagem: boolean;
   private pagina: number;
 
 
-  constructor( private filmeApiService: FilmeService )
+  constructor( private filmeApiService: FilmeService, private localStorageService: LocalStorageService )
   {
     this.filmes = [];
+    this.filmesFavoritos = [];
     this.pagina = 1;
     this.carregandoListagem = false;
   }
 
   ngOnInit(): void {
     this.obterFilmesPopulares();
+    this.filmesFavoritos = this.localStorageService.obterFavoritos();
   }
 
   protected obterFilmesPopulares() {
@@ -41,8 +47,6 @@ export class ListagemComponent implements OnInit{
         this.filmes.push(...filmesMapeados);
         this.pagina++;
         this.carregandoListagem = false;
-
-        this.filmes.sort((filme) => filme.id);
       })
   }
   private mapearFilme(obj: any): Filme {
