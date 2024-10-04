@@ -1,7 +1,7 @@
 <div *ngIf="filmes.length > 0">
   <h4 class="app-texto-filmes-favoritos">Filmes Favoritos</h4>
 
-  <section class="row justify-content-center">
+  <section class="row app-listagem-favoritos">
     <div *ngFor="let filme of filmes" class="app-card-filme-favorito">
       <div class="card rounded-3 h-100 border-0">
         <a class="stretched-link" [routerLink]="['/filmes', filme.id]"></a>

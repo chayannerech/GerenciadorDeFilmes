@@ -24,6 +24,31 @@ select {
   vertical-align: 0;
 }
 
+.app-barra-pesquisa {
+  display: none;
+  background-color: transparent;
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+}
+
+.app-barra-pesquisa.show {
+  display: flex;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 .bi-person-circle {
   color: red($color: #000000);
   width: 1000px;

@@ -1,16 +1,17 @@
-import { NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, ElementRef, ViewChild, AfterViewInit, Renderer2, ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NgClass],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 
 export class NavbarComponent implements AfterViewInit {
   seletorVisivel = false;
+  pesquisaVisivel: boolean = false;
   navbarTogglerVisivel = true;
   screenWidth!: number;
   @ViewChild('dropdownMenu') dropdownMenu!: ElementRef;
@@ -35,7 +36,12 @@ export class NavbarComponent implements AfterViewInit {
   mostrarDropdown() {
     this.seletorVisivel = !this.seletorVisivel;
   }
+
   ocultarDropdown() {
     this.seletorVisivel = false;
+  }
+
+  togglePesquisa() {
+    this.pesquisaVisivel = !this.pesquisaVisivel;
   }
 }

@@ -16,7 +16,7 @@
       &#9776;
     </button>
     <div class="navbar-collapse collapse">
-      <div class="app-nav-itens">
+      <div class="app-nav-itens d-flex align-items-center">
         <button
           (click)="mostrarDropdown()"
           class="nav-item btn btn-icon"
@@ -37,7 +37,9 @@
 
         <button
           title="Pesquisar"
-          class="btn btn-icon">
+          class="btn btn-icon"
+          (click)="togglePesquisa()"
+        >
           <i class="bi bi-search"></i>
         </button>
 
@@ -59,3 +61,10 @@
     </div>
   </div>
 </nav>
+
+<div
+  class="app-barra-pesquisa"
+  [ngClass]="{'show': pesquisaVisivel}"
+>
+  <input type="text" class="form-control bg-body-secondary text-center border-0" placeholder="Pesquisar...">
+</div>
