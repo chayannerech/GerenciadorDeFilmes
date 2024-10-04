@@ -1,0 +1,44 @@
+.app-texto-filmes-favoritos {
+  text-align: center;
+  margin: 0 5.4%;
+  margin-top: 7%;
+  padding: 5px;
+  border: 0.1rem solid #ffffff62;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff7a18, #ff7a18, #f1013d, #2888d6d5, #2888d6);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 150%;
+}
+
+.app-texto-filmes-favoritos:hover {
+  transform: scale(1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.app-card-filme-favorito {
+  width: 20%;
+  margin: 2% 0;
+  padding: 0 0.5%;
+}
+
+@media (width > 767px) {
+  .app-card-filme-favorito {
+    width: 17%;
+  }
+}
+
+@media (width > 877px) {
+  .app-card-filme-favorito {
+    width: 15%;
+  }
+}
+
+@media (width > 991px) {
+  .app-card-filme-favorito {
+    width: 11%;
+  }
+  .app-texto-filmes-favoritos {
+    margin: 0 8%;
+  }
+}

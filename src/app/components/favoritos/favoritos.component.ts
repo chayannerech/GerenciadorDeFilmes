@@ -1,4 +1,4 @@
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FilmeFavorito } from '../../models/favoritos';
@@ -6,7 +6,7 @@ import { FilmeFavorito } from '../../models/favoritos';
 @Component({
   selector: 'app-filmes-favoritos',
   standalone: true,
-  imports: [RouterLink, NgForOf],
+  imports: [RouterLink, NgForOf, NgIf],
   templateUrl: './favoritos.component.html',
   styleUrl: './favoritos.component.scss',
 })
