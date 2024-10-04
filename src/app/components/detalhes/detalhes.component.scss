@@ -91,9 +91,33 @@
   background: linear-gradient(90deg, #ff7a18, #ff7a18, #f1013d, #2888d6d5, #2888d6);
   -webkit-background-clip: text;
   color: transparent;
+  margin-bottom: 0;
+}
+
+.app-linha-do-titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+@media (width > 858px) {
+  .app-titulo-detalhes {
+    font-size: 215%;
+  }
+}
+
+@media (width > 991px) {
+  .app-titulo-detalhes {
+    font-size: 260%;
+  }
 }
 
 @media (width < 768px) {
+  .app-linha-do-titulo {
+    display: inline;
+  }
+
   .app-poster {
     display: flex;
   }
@@ -114,14 +138,13 @@
   }
 }
 
-.app-voltar {
-  justify-content: center;
-  text-decoration: none;
-}
-
 .app-btn-voltar {
   border-color: #ffffff62;
-
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  margin-left: 37.5%;
   background: linear-gradient(90deg, #943e00, #8b0023, #001cb9);
   -webkit-background-clip: text;
   color: transparent;

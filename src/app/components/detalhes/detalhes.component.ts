@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { DetalhesFilme } from "../../models/detalhes";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { FilmeService } from "../../services/filme.service";
-import { DomSanitizer } from "@angular/platform-browser";
+import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { MembroElenco } from "../../models/membro-elenco";
 import { VideoFilme } from "../../models/video";
 import { GeneroFilme } from "../../models/genero";
@@ -25,7 +25,7 @@ export class DetalhesComponent implements OnInit {
     private route: ActivatedRoute,
     private filmeService: FilmeService,
     private localStorageService: LocalStorageService,
-    private domSanitizer: DomSanitizer
+    private domSanitizer: DomSanitizer,
   ) {}
 
   ngOnInit(): void {
@@ -86,7 +86,7 @@ export class DetalhesComponent implements OnInit {
         .map((g: GeneroFilme) => g.nome)
         .join(', '),
 
-      videos: obj.videos.results.map((v: any) => this.mapearVideoFilme(v)),
+      videos: obj.videos.results ? obj.videos.results.map((v: any) => this.mapearVideoFilme(v)) : [],
       elencoPrincipal: obj.credits.cast.map(this.mapearElencoFilme),
       favorito: this.localStorageService.favoritoJaExiste(obj.id)
     };
@@ -117,8 +117,7 @@ export class DetalhesComponent implements OnInit {
     };
   }
 
-  public filmePossuiElenco(detalhes: DetalhesFilme) : boolean{
-    console.log(detalhes.elencoPrincipal);
-    return detalhes.videos[0] != null
+  public filmePossuiTrailer(detalhes: DetalhesFilme) : any {
+    return detalhes.videos.length > 0 ?  detalhes.videos[0].sourceUrl : "";
   }
 }
