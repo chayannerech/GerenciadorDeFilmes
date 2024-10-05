@@ -4,8 +4,9 @@ import { BuscaComponent } from "../busca/busca.component";
 import { ResultadoBusca } from '../../models/busca';
 import { FilmeService } from '../../services/filme.service';
 import { Filme } from '../../models/filme';
-import { RouterLink } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { BuscaRealizadaService } from '../../services/busca-realizada.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -32,8 +33,21 @@ export class NavbarComponent implements AfterViewInit {
     private cdref: ChangeDetectorRef,
     private elementRef: ElementRef,
     private buscaRealizada: BuscaRealizadaService,
+    private router: Router
   ) {
     this.maximoPaginasAlcancado = false;
+  }
+
+  ngOnInit(): void {
+    this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd)
+      )
+      .subscribe((event: NavigationEnd) => {
+        if (event.url !== '/filmes') {
+          this.limparPesquisa();
+        }
+      });
   }
 
   ngAfterViewInit() {
@@ -45,8 +59,6 @@ export class NavbarComponent implements AfterViewInit {
 
       const clickedInsideDropdown = this.adicionar?.nativeElement.contains(event.target);
       const clickedInsidePesquisa = this.pesquisar?.nativeElement.contains(event.target);
-
-      console.log(clickedInsidePesquisa);
 
       if (!clickedInsideDropdown && !clickedBotao) {
         this.ocultarOpcoesDeAdicionar();
@@ -77,8 +89,9 @@ export class NavbarComponent implements AfterViewInit {
   pesquisarFilme( busca: string, pagina: number = 1 ) {
     if (this.buscaRealizada != undefined) {
       this.resultadoBusca == undefined;
-      console.log("oi");
     }
+
+    this.router.navigate(['/busca']);
 
     this.buscaRealizada.atualizarResultadoBusca(busca.length > 1);
 
@@ -99,7 +112,6 @@ export class NavbarComponent implements AfterViewInit {
       }
       else {
         if (pagina >= this.resultadoBusca.quantidadePaginas) {
-          console.log(this.resultadoBusca.quantidadePaginas);
           this.maximoPaginasAlcancado = true;
         }
         this.resultadoBusca.pagina = novoResultado.pagina;
@@ -112,7 +124,7 @@ export class NavbarComponent implements AfterViewInit {
     }
   }
 
-  public limpaPesquisa () {
+  public limparPesquisa () {
     this.resultadoBusca = undefined;
   }
 

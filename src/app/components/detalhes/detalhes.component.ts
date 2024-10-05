@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { DetalhesFilme } from "../../models/detalhes";
 import { ActivatedRoute, RouterLink } from "@angular/router";
 import { FilmeService } from "../../services/filme.service";
-import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
+import { DomSanitizer } from "@angular/platform-browser";
 import { MembroElenco } from "../../models/membro-elenco";
 import { VideoFilme } from "../../models/video";
 import { GeneroFilme } from "../../models/genero";
