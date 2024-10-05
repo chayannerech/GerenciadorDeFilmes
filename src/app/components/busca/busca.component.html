@@ -1,0 +1,26 @@
+<div *ngIf="resultadoBusca" class="container my-4 resultados-busca bg-transparent teste">
+	<div class="row g-3 teste">
+    <div class="resultados-busca d-flex flex-column justify-content-center align-items-center">
+      <h4 class="text-center text-white mb-3">Resultados da busca</h4>
+      <p class="bg-transparent text-white mb-2">
+        <span class="bg-secondary px-2 py-1 rounded-pill filmes-badge">{{ resultadoBusca.quantidadeResultados }}</span>
+        Filmes
+      </p>
+
+      <p class="bg-transparent text-white">
+        <span class="bg-secondary px-2 py-1 rounded-pill paginas-badge">{{ resultadoBusca.quantidadePaginas }}</span>
+        Páginas
+      </p>
+    </div>
+
+		<div class="col">
+			<div class="row g-3 h-100 justify-content-center align-items-center">
+				<div *ngFor="let filme of resultadoBusca.filmes" class="col-2 col-lg-2">
+          <app-card-filme
+          [filme]="filme"
+        ></app-card-filme>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

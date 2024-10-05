@@ -37,4 +37,9 @@ export class FilmeService {
       }
     }
   }
+
+  public pesquisarFilmes(query: string, pagina: number = 1): Observable<any> {
+    const urlCompleto = `https://api.themoviedb.org/3/search/movie?query=${query}&page=${pagina}&language=pt-BR`;
+    return this.http.get<any>(urlCompleto, this.obterHeadersDeAutorizacao());
+  }
 }

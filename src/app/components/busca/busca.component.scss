@@ -1,0 +1,32 @@
+.app-borda-nota-mais-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-media {
+  border-color: #ffed23;
+}
+
+.app-borda-nota-alta {
+  border-color: rgb(0, 196, 0);
+}
+
+.resultados-busca {
+  text-align: center; /* Garante que o texto fique centralizado */
+}
+
+.filmes-badge, .paginas-badge {
+  font-size: 0.9rem; /* Reduz o tamanho da fonte dos badges */
+  padding: 0.2rem 0.6rem; /* Reduz o espaçamento interno dos badges */
+}
+
+h4 {
+  margin-bottom: 1rem; /* Garante um espaçamento adequado entre o título e o resto */
+}
+
+p {
+  margin-bottom: 0.5rem; /* Ajusta o espaçamento entre as linhas de Filmes e Páginas */
+}

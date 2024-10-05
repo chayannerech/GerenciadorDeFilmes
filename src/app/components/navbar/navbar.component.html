@@ -1,70 +1,108 @@
-<nav class="navbar navbar-expand-lg bg-dark py-1">
-  <div class="container">
-    <a class="d-flex align-items-center" href="#">
-      <img src="filme-icon.png" [width]="35" alt="claquete">
-      <span class="app-texto-navbar fw-bold mx-4">MDB</span>
-    </a>
-    <button
-      class="navbar-toggler text-white border-white"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      &#9776;
-    </button>
-    <div class="navbar-collapse collapse">
-      <div class="app-nav-itens d-flex align-items-center">
-        <button
-          (click)="mostrarDropdown()"
-          class="nav-item btn btn-icon"
-          title="Adicionar"
-          id="select-icon"
-        >
-          <i class="bi bi-plus-circle"></i>
-        </button>
+<nav class="navbar navbar-expand-lg bg-dark py-1 position-relative">
+	<div class="container">
+		<a class="d-flex align-items-center" href="#">
+			<img src="filme-icon.png" [width]="35" alt="claquete">
+			<span class="app-texto-navbar fw-bold mx-4">MDB</span>
+		</a>
 
-        <div
-          class="select-dropdown px-lg-3"
-          [style.display]="seletorVisivel ? 'block' : 'none'"
-          #dropdownMenu
-        >
-          <a href="#" data-value="novoFilme" (click)="ocultarDropdown()">Adicionar novo filme</a>
-          <a href="#" data-value="novaSerie" (click)="ocultarDropdown()">Adicionar nova série</a>
-        </div>
+		<button
+			class="navbar-toggler text-white border-white"
+			type="button"
+			data-bs-toggle="collapse"
+			data-bs-target="#navbarNavAltMarkup"
+			aria-controls="navbarNavAltMarkup"
+			aria-expanded="false"
+			aria-label="Toggle navigation"
+		>
+			&#9776;
+		</button>
+
+		<div class="navbar-collapse collapse" id="navbarNavAltMarkup">
+			<div class="app-nav-itens d-flex align-items-center">
+				<button
+					(click)="mostrarOpcoesDeAdicionar()"
+					class="nav-item btn app-btn-adicionar"
+					title="Adicionar"
+					id="btn-adicionar"
+				>
+					<i class="bi bi-plus-circle"></i>
+				</button>
+
+				<div
+					class="select-dropdown app-opcoes-adicionar"
+					[style.display]="seletorVisivel ? 'block' : 'none'"
+					#adicionar
+				>
+					<a href="#" data-value="novoFilme" (click)="ocultarOpcoesDeAdicionar()">Adicionar novo filme</a>
+					<a href="#" data-value="novaSerie" (click)="ocultarOpcoesDeAdicionar()">Adicionar nova série</a>
+				</div>
 
         <button
-          title="Pesquisar"
-          class="btn btn-icon"
-          (click)="togglePesquisa()"
+          title="Pesquisar filme"
+          class="btn app-btn-pesquisar"
+          (click)="mostrarBarraPesquisa()"
+          id="btn-pesquisar"
         >
           <i class="bi bi-search"></i>
-        </button>
+          </button>
 
-        <div class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle btn-icon"
-            href="#"
-            data-bs-toggle="dropdown"
-            title="Perfil"
+          <div
+            [ngClass]="{'show': pesquisaVisivel}"
+            class="app-barra-pesquisa"
           >
-            <i class="bi bi-person-circle btn-icon"></i>
-          </a>
+            <input
+              #pesquisar
+              id="pesquisar"
+              (keydown.enter)="pesquisarFilme(pesquisar.value)"
+              (keydown.enter)="limpaPesquisa()"
+              type="text"
+              class="app-input-pesquisa"
+              placeholder="Pesquisar filme..."
+            />
+          </div>
 
-          <ul class="dropdown-menu">
-            <li> <a class="dropdown-item text-center text-bg-secondary" href="#">Registrar</a></li>
-            <li> <a class="dropdown-item text-center text-bg-secondary" href="#">Entrar</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+					<a
+						class="nav-link dropdown-toggle app-btn-perfil"
+						href="#"
+						data-bs-toggle="dropdown"
+						title="Perfil"
+					>
+						<i class="bi bi-person-circle app-icone-perfil app-icone-perfil"></i>
+					</a>
+
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item text-center text-bg-secondary" href="#">Registrar</a></li>
+						<li><a class="dropdown-item text-center text-bg-secondary" href="#">Entrar</a></li>
+					</ul>
+			</div>
+		</div>
+	</div>
 </nav>
 
-<div
-  class="app-barra-pesquisa"
-  [ngClass]="{'show': pesquisaVisivel}"
->
-  <input type="text" class="form-control bg-body-secondary text-center border-0" placeholder="Pesquisar...">
+<app-busca
+  [resultadoBusca]="resultadoBusca"
+></app-busca>
+
+<div *ngIf="resultadoBusca" class="container my-4 resultados-busca bg-transparent">
+  <section
+    aria-label="Paginação"
+    class="d-flex justify-content-center mt-3"
+  >
+    <button
+      *ngIf="!maximoPaginasAlcancado"
+      (click)="pesquisarFilme(pesquisar.value, resultadoBusca.pagina + 1)"
+      class="app-btn-mais-resultados"
+    >
+      Mais resultados
+    </button>
+    <a
+      class="d-flex justify-content-center mt-3"
+      href="#"
+      title="Retornar"
+      >
+      <button class="app-btn-voltar">
+        <i class="bi bi-arrow-return-left"></i>
+      </button>
+    </a>
+  </section>
 </div>

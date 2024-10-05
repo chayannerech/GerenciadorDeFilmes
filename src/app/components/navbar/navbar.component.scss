@@ -2,6 +2,53 @@ a{
   text-decoration: none;
 }
 
+select {
+  display: none;
+}
+
+.app-nav-itens{
+  position: relative;
+  display: flex;
+  margin-left: auto;
+}
+
+.app-icone-perfil {
+  width: 1000px;
+  padding-left: 11px;
+}
+
+.app-btn-adicionar {
+  background: linear-gradient(90deg, #ff8a37, #ff3568, #79c3ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  border: none;
+  font-size: 21px;
+  cursor: pointer;
+  vertical-align: 0;
+}
+
+.app-opcoes-adicionar {
+  display: none;
+  background-color: transparent;
+  border-color: white;
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+  color: white;
+}
+
+.app-opcoes-adicionar a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+  padding-right: 1rem;
+}
+
+.app-opcoes-adicionar a:hover {
+  color: rgb(128, 128, 128);
+}
+
 .app-texto-navbar {
   background: linear-gradient(90deg, #ff7a18, #f1013d, #5fa7e2);
   -webkit-background-clip: text;
@@ -9,17 +56,12 @@ a{
   font-size: 38px;
 }
 
-select {
-  display: none;
-}
-
-.btn-icon {
+.app-btn-pesquisar {
   background: linear-gradient(90deg, #ff8a37, #ff3568, #79c3ff);
   -webkit-background-clip: text;
   color: transparent;
   border: none;
   font-size: 21px;
-  padding: 10px;
   cursor: pointer;
   vertical-align: 0;
 }
@@ -30,6 +72,18 @@ select {
   position: relative;
   width: 100%;
   z-index: 1000;
+}
+
+.app-barra-pesquisa input{
+  background-color: transparent;
+  text-align: center;
+  border-radius: 5px;
+  border-color: white;
+  color: #ccc;
+}
+
+.app-barra-pesquisa input::placeholder{
+  color: #ccc;
 }
 
 .app-barra-pesquisa.show {
@@ -48,37 +102,44 @@ select {
   }
 }
 
-
-.bi-person-circle {
-  color: red($color: #000000);
-  width: 1000px;
+.app-btn-perfil {
+  background: linear-gradient(90deg, #ff8a37, #ff3568, #79c3ff);
+  -webkit-background-clip: text;
+  color: transparent;
+  border: none;
+  font-size: 21px;
+  cursor: pointer;
+  vertical-align: 0;
 }
 
-.select-dropdown {
-  position: absolute;
-  right: 127px;
-  background-color: rgb(216, 229, 255);
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 45px;
-  z-index: 1000;
-  width: 160px;
-  font-size: 13px;
-  font-weight:500;
+.app-btn-voltar {
+  border-color: #ffffff62;
+  background: linear-gradient(90deg, #943e00, #8b0023, #001cb9);
+  -webkit-background-clip: text;
+  color: transparent;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 130%;
+  width: 200px;
+  margin-bottom: 40px;
 }
 
-.select-dropdown a {
-  display: block;
-  color: #000;
-  text-decoration: none;
+.app-btn-voltar:hover {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 }
 
-.select-dropdown a:hover {
-  color: rgb(89, 35, 238);
+.app-btn-mais-resultados {
+  border-color: #ffffff62;
+  background: linear-gradient(90deg, #943e00, #8b0023, #001cb9);
+  -webkit-background-clip: text;
+  color: transparent;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 130%;
+  width: 200px;
+  margin-bottom: 40px;
 }
 
-.app-nav-itens{
-  position: relative;
-  display: flex;
-  margin-left: auto;
+.app-btn-mais-resultados:hover {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 }

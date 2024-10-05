@@ -6,11 +6,13 @@ import { CardFilmeComponent } from './card-filme/card-filme.component';
 import { LocalStorageService } from '../../services/local-storage.service';
 import { FilmesFavoritosComponent } from '../favoritos/favoritos.component';
 import { FilmeFavorito } from '../../models/favoritos';
+import { BuscaRealizadaService } from '../../services/busca-realizada.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listagem',
   standalone: true,
-  imports: [NgForOf, CardFilmeComponent, NgIf, FilmesFavoritosComponent],
+  imports: [NgForOf, CardFilmeComponent, NgIf, FilmesFavoritosComponent, RouterLink],
   templateUrl: './listagem.component.html',
   styleUrl: './listagem.component.scss'
 })
@@ -20,9 +22,9 @@ export class ListagemComponent implements OnInit{
   public filmesFavoritos: FilmeFavorito[];
   public carregandoListagem: boolean;
   private pagina: number;
+  buscaRealizada: boolean = false;
 
-
-  constructor( private filmeApiService: FilmeService, private localStorageService: LocalStorageService )
+  constructor( private filmeApiService: FilmeService, private localStorageService: LocalStorageService, private buscaRealizadaService: BuscaRealizadaService )
   {
     this.filmes = [];
     this.filmesFavoritos = [];
@@ -31,6 +33,10 @@ export class ListagemComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.buscaRealizadaService.buscaRealizada$.subscribe(realizada => {
+      this.buscaRealizada = realizada;
+    });
+
     this.obterFilmesPopulares();
     this.filmesFavoritos = this.localStorageService.obterFavoritos();
   }
