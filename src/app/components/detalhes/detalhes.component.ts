@@ -11,6 +11,7 @@ import { ElencoPrincipalComponent } from "./elenco-principal/elenco-principal.co
 import { LocalStorageService } from "../../services/local-storage.service";
 import { FilmeFavorito } from "../../models/favoritos";
 import { BuscaRealizadaService } from "../../services/busca-realizada.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-detalhes',
@@ -28,7 +29,8 @@ export class DetalhesComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private domSanitizer: DomSanitizer,
     private buscaRealizada: BuscaRealizadaService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +50,9 @@ export class DetalhesComponent implements OnInit {
     if (this.localStorageService.favoritoJaExiste(id)) {
       this.detalhes.favorito = false;
       this.localStorageService.removerFavorito(id);
+      this.toastrService.success(
+        'Removido dos favoritos',
+      );
     } else {
       this.detalhes.favorito = true;
       const novoFavorito: FilmeFavorito = {
@@ -56,6 +61,9 @@ export class DetalhesComponent implements OnInit {
         urlImagem: this.detalhes.urlPoster,
       };
       this.localStorageService.salvarFavorito(novoFavorito);
+      this.toastrService.success(
+        'Adicionado aos favoritos!',
+      );
     }
   }
 

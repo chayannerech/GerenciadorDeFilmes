@@ -1,5 +1,6 @@
-@import "bootstrap";
+@import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons";
+@import "ngx-toastr/toastr-bs5-alert";
 
 body {
   background: -webkit-linear-gradient(to right, #faf3f4, #c2c2fb);

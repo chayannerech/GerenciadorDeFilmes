@@ -21,7 +21,12 @@ export class BuscaComponent {
 
   @Output() onBuscar = new EventEmitter<string>();
 
-  constructor( private filmeService: FilmeService, private route: ActivatedRoute, private buscaRealizada: BuscaRealizadaService, private router: Router) {
+  constructor(
+    private filmeService: FilmeService,
+    private route: ActivatedRoute,
+    private buscaRealizada: BuscaRealizadaService,
+    private router: Router,
+  ) {
     this.maximoPaginasAlcancado = false;
     this.buscaDesejada = this.route.snapshot.params['query'];
 
@@ -29,12 +34,9 @@ export class BuscaComponent {
   }
 
   public pesquisarFilme( pagina: number = 1 ) {
-    if (this.buscaDesejada.length < 1) return;
-
     if (this.buscaRealizada != undefined)
       this.resultadoBusca == undefined;
 
-    this.router.navigate(['/busca', this.buscaDesejada]);
     this.buscaRealizada.atualizarResultadoBusca(this.buscaDesejada.length > 1);
     this.maximoPaginasAlcancado = false;
 

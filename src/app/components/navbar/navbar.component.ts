@@ -3,6 +3,7 @@ import { Component, ElementRef, ViewChild, AfterViewInit, Renderer2, ChangeDetec
 import { BuscaComponent } from "../busca/busca.component";
 import { ResultadoBusca } from '../../models/busca';
 import { Router, RouterLink } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -26,7 +27,8 @@ export class NavbarComponent implements AfterViewInit {
   constructor (
     private renderer: Renderer2,
     private elementRef: ElementRef,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService
   ) {
     this.maximoPaginasAlcancado = false;
   }
@@ -66,6 +68,15 @@ export class NavbarComponent implements AfterViewInit {
   }
 
   pesquisarFilme( busca: string ) {
+    if (busca.length == 0) {
+      this.toastrService.info (
+        'Informe o título que deseja buscar',
+        'Aviso'
+      )
+
+      return;
+    }
+
     if (this.router.url.startsWith('/busca')) {
       this.router.navigate(['/busca', busca])
         .then(() => {
