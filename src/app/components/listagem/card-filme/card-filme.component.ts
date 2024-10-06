@@ -10,6 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './card-filme.component.html',
   styleUrl: './card-filme.component.scss'
 })
+
 export class CardFilmeComponent {
   @Input({ required: true}) filme?: Filme;
 

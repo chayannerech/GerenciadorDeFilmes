@@ -1,7 +1,9 @@
 <div *ngIf="!buscaRealizada">
-  <app-filmes-favoritos [filmes]="filmesFavoritos"></app-filmes-favoritos>
+  <app-favoritos [filmes]="filmesFavoritos"></app-favoritos>
 
-  <h3 class="app-texto-filmes-populares">Filmes Populares</h3>
+  <div class="app-titulo">
+    <h3 class="app-texto-filmes-populares">Filmes Populares</h3>
+  </div>
 
   <section class="row app-mostrar-cards">
     <div *ngFor="let filme of filmes" class="app-config-col p-2">

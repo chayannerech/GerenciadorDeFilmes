@@ -1,34 +1,28 @@
-.app-borda-nota-mais-baixa {
-  border-color: #f62424;
+.app-texto-resultados {
+  display: inline;
+  margin-top: 1%;
+  background: linear-gradient(90deg, #ff7a18, #f1013d, #f1013d, #2888d6);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 160%;
 }
 
-.app-borda-nota-baixa {
-  border-color: #f62424;
+.app-resultados-busca {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.app-borda-nota-media {
-  border-color: #ffed23;
-}
+.app-titulo {
+  text-align: center;
+  width: 85%;
+  margin: 2% 0 auto;
+  padding-bottom: 0.5%;
 
-.app-borda-nota-alta {
-  border-color: rgb(0, 196, 0);
-}
-
-.resultados-busca {
-  text-align: center; /* Garante que o texto fique centralizado */
-}
-
-.filmes-badge, .paginas-badge {
-  font-size: 0.9rem; /* Reduz o tamanho da fonte dos badges */
-  padding: 0.2rem 0.6rem; /* Reduz o espaçamento interno dos badges */
-}
-
-h4 {
-  margin-bottom: 1rem; /* Garante um espaçamento adequado entre o título e o resto */
-}
-
-p {
-  margin-bottom: 0.5rem; /* Ajusta o espaçamento entre as linhas de Filmes e Páginas */
+  border-bottom: 1px solid;
+  border-image: linear-gradient(90deg, #ff7a18, #f1013d, #f1013d, #2888d6) 1;
+  background-color: transparent;
 }
 
 .app-mostrar-cards {
@@ -37,6 +31,7 @@ p {
   justify-content: center;
 }
 
+// #region Reponsividade
 @media (max-width: 315px) {
   .app-config-col {
     width: 100%;
@@ -69,10 +64,81 @@ p {
 
 @media (width > 991px) {
   .app-config-col {
-    width: 13%;
-  }
-  .app-texto-filmes-populares {
-    margin: 2% 8%;
-    margin-bottom: 0;
+    width: 16%;
   }
 }
+// #endregion
+
+// #region Números de resultados
+.app-indices-pesquisa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: 90%;
+  border-bottom: 1px solid gray;
+  width: 70%;
+  margin-bottom: 1%;
+}
+
+.app-numeros-indices {
+  background-color: transparent;
+  border: 1px solid gray;
+  padding: 2px 10px;
+  font-size: 85%;
+  font-weight: bold;
+  margin-right: 8px;
+}
+// #endregion
+
+// #region Botões
+.app-btn-voltar {
+  margin-top: 2%;
+  border-color: #ffffffa8;
+  background: linear-gradient(0deg, #6458705d, #393b3d5d);
+  color: white;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 120%;
+  width: 200px;
+  margin-bottom: 40px;
+}
+
+.app-btn-voltar:hover {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.app-btn-mais-resultados {
+  margin-top: 2%;
+  border-color: #ffffffa8;
+  background: linear-gradient(0deg, #6458705d, #393b3d5d);
+  color: white;
+  border-radius: 10px;
+  font-weight: 400;
+  font-size: 100%;
+  width: 200px;
+  margin-bottom: 40px;
+}
+// #endregion
+
+//#region Avaliação
+.app-btn-mais-resultados:hover {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.app-borda-nota-mais-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-media {
+  border-color: #ffed23;
+}
+
+.app-borda-nota-alta {
+  border-color: rgb(0, 196, 0);
+}
+//#endregion

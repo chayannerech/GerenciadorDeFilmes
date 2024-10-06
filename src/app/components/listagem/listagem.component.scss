@@ -1,19 +1,24 @@
 .app-texto-filmes-populares {
-  text-align: center;
-  margin: 2% 5.4%;
-  margin-bottom: 0;
+  display: inline-block;
+  margin: 1%;
   padding: 5px;
-  border: 0.1rem solid #ffffff62;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #ff7a18, #ff7a18, #f1013d, #2888d6d5, #2888d6);
+  padding-bottom: 0;
+  background: linear-gradient(90deg, #ff7a18, #f1013d, #f1013d, #2888d6);
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 150%;
+  font-size: 130%;
+  cursor:default;
 }
 
-.app-texto-filmes-populares:hover {
-  transform: scale(1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+.app-titulo {
+  text-align: center;
+  width: 85%;
+  margin: 2% auto;
+  margin-bottom: 1%;
+
+  border-bottom: 1px solid;
+  border-image: linear-gradient(90deg, #ff7a18, #f1013d, #f1013d, #2888d6) 1;
+  background-color: transparent;
 }
 
 .app-mostrar-cards {
@@ -22,32 +27,34 @@
   justify-content: center;
 }
 
+//#region Botões
 .app-botao-mais-resultados {
-  border-color: #ffffff62;
-
-  background: linear-gradient(90deg, #943e00, #8b0023, #001cb9);
-  -webkit-background-clip: text;
-  color: transparent;
-  font-size: 18px;
+  border-color: #ffffffa8;
+  background: linear-gradient(0deg, #6458705d, #393b3d5d);
+  font-size: 100%;
   font-weight:500;
   border-radius: 10px;
   width: 200px;
-  margin-bottom: 30px;
+  margin: 30px;
+  color: white;
+  border-radius: 10px;
 }
+//#endregion
 
 .app-botao-mais-resultados:hover {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 }
 
+//#region Responsividade
 @media (max-width: 315px) {
   .app-config-col {
-    width: 100%;
+    width: 90%;
   }
 }
 
 @media (width > 315px) {
   .app-config-col {
-    width: 50%;
+    width: 45%;
   }
 }
 
@@ -61,6 +68,9 @@
   .app-config-col {
     width: 25%;
   }
+  .app-texto-filmes-populares {
+    font-size: 170%;
+  }
 }
 
 @media (width > 877px ) {
@@ -69,12 +79,15 @@
   }
 }
 
-@media (width > 991px) {
+@media (width > 1023px) {
+  .app-config-col {
+    width: 16%;
+  }
+}
+
+@media (width > 1200px) {
   .app-config-col {
     width: 13%;
   }
-  .app-texto-filmes-populares {
-    margin: 2% 8%;
-    margin-bottom: 0;
-  }
 }
+//#endregion

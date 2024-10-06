@@ -1,26 +1,52 @@
-<div *ngIf="resultadoBusca" class="my-4 resultados-busca bg-transparent teste">
-	<div class="row g-3 teste">
-    <div class="resultados-busca d-flex flex-column justify-content-center align-items-center">
-      <h4 class="text-center text-white mb-3">Resultados da busca</h4>
-      <p class="bg-transparent text-white mb-2">
-        <span class="bg-secondary px-2 py-1 rounded-pill filmes-badge">{{ resultadoBusca.quantidadeResultados }}</span>
+<div class="row">
+  <div
+    class="app-resultados-busca">
+    <div class="app-titulo">
+      <h4 class="app-texto-resultados">Resultados da busca</h4>
+    </div>
+    <div class="app-indices-pesquisa">
+      <p class="text-white me-4 my-2">
+        <span class="app-numeros-indices rounded-pill">
+          {{ resultadoBusca?.quantidadeResultados }}
+        </span>
         Filmes
       </p>
 
-      <p class="bg-transparent text-white">
-        <span class="bg-secondary px-2 py-1 rounded-pill paginas-badge">{{ resultadoBusca.quantidadePaginas }}</span>
+      <p class="text-white my-2">
+        <span class="app-numeros-indices rounded-pill">
+          {{ resultadoBusca?.quantidadePaginas }}
+        </span>
         Páginas
       </p>
     </div>
 
-		<div class="col">
-			<div class="row g-3 app-mostrar-cards">
-				<div *ngFor="let filme of resultadoBusca.filmes" class="app-config-col">
+    <div class="col">
+      <div class="row g-3 app-mostrar-cards">
+        <div *ngFor="let filme of resultadoBusca?.filmes" class="app-config-col">
           <app-card-filme
           [filme]="filme"
         ></app-card-filme>
-				</div>
-			</div>
-		</div>
-	</div>
+        </div>
+      </div>
+    </div>
+
+    <section
+      aria-label="Paginação"
+      class="d-flex justify-content-center mt-3 gap-3"
+    >
+      <button class="app-btn-voltar"
+        (click)="retornarPaginaPrincipal()"
+      >
+        <i class="bi bi-arrow-return-left"></i>
+      </button>
+
+      <button
+      *ngIf="!maximoPaginasAlcancado"
+      (click)="pesquisarFilme(resultadoBusca!.pagina + 1)"
+      class="app-btn-mais-resultados"
+      >
+        Mais resultados
+      </button>
+    </section>
+  </div>
 </div>

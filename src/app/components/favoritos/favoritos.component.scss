@@ -1,51 +1,120 @@
 .app-texto-filmes-favoritos {
-  text-align: center;
-  margin: 3% 5.4%;
-  margin-bottom: 1%;
+  display: inline-block;
+  margin-top: 1%;
   padding: 5px;
-  border: 0.1rem solid #ffffff62;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #ff7a18, #ff7a18, #f1013d, #2888d6d5, #2888d6);
+  padding-bottom: 0;
+  background: linear-gradient(90deg, #ff7a18, #f1013d, #f1013d, #2888d6);
   -webkit-background-clip: text;
   color: transparent;
-  font-size: 150%;
+  font-size: 130%;
+  cursor:default;
 }
 
-.app-texto-filmes-favoritos:hover {
-  transform: scale(1);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
+.app-titulo {
+  text-align: center;
+  width: 85%;
+  margin: 2% auto;
+  margin-bottom: 1%;
 
-.app-listagem-favoritos {
-  justify-content: center;
-  margin: 0 6%;
-  gap: 1%;
+  border-bottom: 1px solid;
+  border-image: linear-gradient(90deg, #ff7a18, #f1013d, #f1013d, #2888d6) 1;
+  background-color: transparent;
 }
 
 .app-card-filme-favorito {
-  width: 20%;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
   padding: 0;
 }
 
-@media (width > 767px) {
+.app-card-filme-favorito:hover {
+  transform: scale(1.03);
+}
+
+.app-listagem-favoritos {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+  gap: 10px;
+}
+
+.app-listagem-favoritos::-webkit-scrollbar {
+  display: none;
+}
+
+// #region Scroll
+.app-conjunto-rolavel {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.app-botao-rolagem {
+  top: 50%;
+  margin: 2%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.app-botao-rolagem i {
+  font-size: 30px;
+}
+
+.app-botao-rolagem.left {
+  left: auto;
+  margin-left: 3%;
+}
+
+.app-botao-rolagem.right {
+  right: 0;
+  margin-right: 3%;
+}
+// #endregion
+
+// #region Reponsividade
+@media (max-width: 315px) {
+  .app-card-filme-favorito {
+    width: 30%;
+  }
+}
+
+@media (width > 315px) {
+  .app-card-filme-favorito {
+    width: 25%;
+  }
+}
+
+@media (width > 576px) {
+  .app-texto-filmes-favoritos {
+    font-size: 170%;
+  }
   .app-card-filme-favorito {
     width: 17%;
   }
 }
 
-@media (width > 877px) {
+@media (width > 767px) {
   .app-card-filme-favorito {
     width: 15%;
   }
 }
 
-@media (width > 991px) {
+@media (width > 877px) {
   .app-card-filme-favorito {
-    width: 11%;
-  }
-  .app-texto-filmes-favoritos {
-    margin: 3% 8%;
-    margin-bottom: 1%;
+    width: 13.0%;
   }
 }
+
+@media (width > 1110px) {
+  .app-card-filme-favorito {
+    width: 8%;
+  }
+}
+// #endregion Reponsividade

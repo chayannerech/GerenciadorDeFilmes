@@ -9,5 +9,5 @@ export const routes: Routes = [
   { path: 'filmes', component: ListagemComponent },
   { path: 'favoritos', component: FilmesFavoritosComponent },
   { path: 'filmes/:id', component: DetalhesComponent },
-  { path: 'busca', component: BuscaComponent },
+  { path: 'busca/:query', component: BuscaComponent },
 ];

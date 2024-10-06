@@ -7,8 +7,7 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { FilmesFavoritosComponent } from '../favoritos/favoritos.component';
 import { FilmeFavorito } from '../../models/favoritos';
 import { BuscaRealizadaService } from '../../services/busca-realizada.service';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { filter } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-listagem',
@@ -25,7 +24,7 @@ export class ListagemComponent implements OnInit{
   private pagina: number;
   buscaRealizada: boolean = false;
 
-  constructor( private filmeApiService: FilmeService, private localStorageService: LocalStorageService, private buscaRealizadaService: BuscaRealizadaService, private router: Router )
+  constructor( private filmeApiService: FilmeService, private localStorageService: LocalStorageService, private buscaRealizadaService: BuscaRealizadaService )
   {
     this.filmes = [];
     this.filmesFavoritos = [];
@@ -56,6 +55,7 @@ export class ListagemComponent implements OnInit{
         this.carregandoListagem = false;
       })
   }
+
   private mapearFilme(obj: any): Filme {
     return {
       id: obj.id,

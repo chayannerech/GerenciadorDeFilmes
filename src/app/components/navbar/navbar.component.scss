@@ -12,11 +12,14 @@ select {
   margin-left: auto;
 }
 
-.app-icone-perfil {
-  width: 1000px;
-  padding-left: 11px;
+.app-texto-navbar {
+  background: linear-gradient(90deg, #ff7a18, #f1013d, #5fa7e2);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 38px;
 }
 
+//#region Adicionar filme
 .app-btn-adicionar {
   background: linear-gradient(90deg, #ff8a37, #ff3568, #79c3ff);
   -webkit-background-clip: text;
@@ -48,14 +51,9 @@ select {
 .app-opcoes-adicionar a:hover {
   color: rgb(128, 128, 128);
 }
+//#endregion
 
-.app-texto-navbar {
-  background: linear-gradient(90deg, #ff7a18, #f1013d, #5fa7e2);
-  -webkit-background-clip: text;
-  color: transparent;
-  font-size: 38px;
-}
-
+//#region Pesquisar
 .app-btn-pesquisar {
   background: linear-gradient(90deg, #ff8a37, #ff3568, #79c3ff);
   -webkit-background-clip: text;
@@ -101,6 +99,13 @@ select {
     transform: translateY(0);
   }
 }
+//#endregion
+
+//#region Perfil
+.app-icone-perfil {
+  width: 1000px;
+  padding-left: 11px;
+}
 
 .app-btn-perfil {
   background: linear-gradient(90deg, #ff8a37, #ff3568, #79c3ff);
@@ -111,7 +116,9 @@ select {
   cursor: pointer;
   vertical-align: 0;
 }
+//#endregion
 
+//#region Botões
 .app-btn-voltar {
   border-color: #ffffff62;
   background: linear-gradient(90deg, #943e00, #8b0023, #001cb9);
@@ -143,3 +150,4 @@ select {
 .app-btn-mais-resultados:hover {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
 }
+//#endregion

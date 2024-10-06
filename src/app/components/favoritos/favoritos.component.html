@@ -1,17 +1,31 @@
 <div *ngIf="filmes.length > 0">
-  <h4 class="app-texto-filmes-favoritos">Filmes Favoritos</h4>
+  <div class="app-titulo">
+    <h4 class="app-texto-filmes-favoritos">Filmes Favoritos</h4>
+  </div>
 
-  <section class="row app-listagem-favoritos">
-    <div *ngFor="let filme of filmes" class="app-card-filme-favorito">
-      <div class="card rounded-3 h-100 border-0">
-        <a class="stretched-link" [routerLink]="['/filmes', filme.id]"></a>
+  <div class="app-conjunto-rolavel">
+    <button class="app-botao-rolagem left" (click)="scrollLeft()">
+      <i class="bi bi-chevron-left"></i>
+    </button>
 
-        <img
-          class="img-fluid rounded-3"
-          [src]="filme.urlImagem"
-          alt="Imagem do Filme {{ filme.titulo }}"
-        />
+    <section class="row app-listagem-favoritos" #carouselContainer>
+      <div *ngFor="let filme of filmes" class="app-card-filme-favorito">
+        <div class="card rounded-3 h-100 border-0">
+          <a class="stretched-link" [routerLink]="['/filmes', filme.id]"></a>
+
+          <img
+            class="img-fluid rounded-3"
+            [src]="filme.urlImagem"
+            alt="Imagem do Filme {{ filme.titulo }}"
+          />
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <button class="app-botao-rolagem right" (click)="scrollRight()">
+      <i class="bi bi-chevron-right"></i>
+    </button>
+  </div>
+
 </div>
+

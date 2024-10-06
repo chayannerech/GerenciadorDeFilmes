@@ -1,15 +1,16 @@
 import { formatDate, NgClass, NgForOf, NgIf } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { DetalhesFilme } from "../../models/detalhes";
-import { ActivatedRoute, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { FilmeService } from "../../services/filme.service";
 import { DomSanitizer } from "@angular/platform-browser";
 import { MembroElenco } from "../../models/membro-elenco";
 import { VideoFilme } from "../../models/video";
 import { GeneroFilme } from "../../models/genero";
-import { ElencoPrincipalComponent } from "../elenco-principal/elenco-principal.component";
+import { ElencoPrincipalComponent } from "./elenco-principal/elenco-principal.component";
 import { LocalStorageService } from "../../services/local-storage.service";
 import { FilmeFavorito } from "../../models/favoritos";
+import { BuscaRealizadaService } from "../../services/busca-realizada.service";
 
 @Component({
   selector: 'app-detalhes',
@@ -26,16 +27,15 @@ export class DetalhesComponent implements OnInit {
     private filmeService: FilmeService,
     private localStorageService: LocalStorageService,
     private domSanitizer: DomSanitizer,
+    private buscaRealizada: BuscaRealizadaService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
 
-    if (!id) {
-      throw new Error(
-        'Não foi possível obter informações sobre o filme requisitado.'
-      );
-    }
+    if (!id)
+      throw new Error( 'Não foi possível obter informações sobre o filme requisitado.' );
 
     this.filmeService.selecionarDetalhesFilmePorId(id).subscribe((f) => {
       this.detalhes = this.mapearDetalhesFilme(f);
@@ -47,17 +47,14 @@ export class DetalhesComponent implements OnInit {
 
     if (this.localStorageService.favoritoJaExiste(id)) {
       this.detalhes.favorito = false;
-
       this.localStorageService.removerFavorito(id);
     } else {
       this.detalhes.favorito = true;
-
       const novoFavorito: FilmeFavorito = {
         id: id,
         titulo: this.detalhes.titulo,
         urlImagem: this.detalhes.urlPoster,
       };
-
       this.localStorageService.salvarFavorito(novoFavorito);
     }
   }
@@ -117,7 +114,8 @@ export class DetalhesComponent implements OnInit {
     };
   }
 
-  public filmePossuiTrailer(detalhes: DetalhesFilme) : any {
-    return detalhes.videos.length > 0 ?  detalhes.videos[0].sourceUrl : "";
+  public retornarPaginaPrincipal(): void {
+    this.buscaRealizada.atualizarResultadoBusca(false);
+    this.router.navigate(['/filmes']);
   }
 }

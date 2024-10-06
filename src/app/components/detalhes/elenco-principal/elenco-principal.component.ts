@@ -1,5 +1,5 @@
 import { Component, Input, input } from '@angular/core';
-import { MembroElenco } from '../../models/membro-elenco';
+import { MembroElenco } from '../../../models/membro-elenco';
 import { NgIf } from '@angular/common';
 
 @Component({

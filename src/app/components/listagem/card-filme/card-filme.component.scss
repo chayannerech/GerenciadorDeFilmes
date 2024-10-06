@@ -7,32 +7,6 @@
   overflow: hidden;
 }
 
-// .app-card-filme::before {
-//   content: '';
-//   position: absolute;
-//   top: 0;
-//   left: -150%;
-//   width: 50%;
-//   height: 100%;
-//   background: linear-gradient(
-//     90deg,
-//     rgba(255, 255, 255, 0.021) 0%,
-//     rgba(255, 255, 255, 0.068) 20%,
-//     rgba(255, 255, 255, 0.185) 30%,
-//     rgba(255, 255, 255, 0.534) 50%,
-//     rgba(255, 255, 255, 0.185) 70%,
-//     rgba(255, 255, 255, 0.068) 80%,
-//     rgba(255, 255, 255, 0.021) 100%
-//   );
-//   transform: skewX(-25deg);
-//   transition: none;
-// }
-
-.app-card-filme:hover::before {
-  left: 150%;
-  transition: left 0.2s ease-out;
-}
-
 .app-card-filme:hover {
   transform: scale(1.03);
   box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
@@ -44,8 +18,17 @@
 
 .app-titulo-card {
   transition: color 0.3s ease;
+  font-size: 90%;
+  font-weight:600;
+  margin-bottom: 0;
 }
 
+.app-subtitulo-card {
+  color: gray;
+  font-size: 75%;
+}
+
+//#region Avaliação
 .app-porcentagem-nota {
   background-color: #081c22;
   color: #f3f3f3;
@@ -113,3 +96,4 @@
 .app-borda-nota-alta {
   border-color: rgb(0, 196, 0);
 }
+//#endregion

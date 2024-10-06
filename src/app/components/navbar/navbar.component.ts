@@ -1,12 +1,8 @@
-import { formatDate, NgClass, NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, ElementRef, ViewChild, AfterViewInit, Renderer2, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
 import { BuscaComponent } from "../busca/busca.component";
 import { ResultadoBusca } from '../../models/busca';
-import { FilmeService } from '../../services/filme.service';
-import { Filme } from '../../models/filme';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { BuscaRealizadaService } from '../../services/busca-realizada.service';
-import { filter } from 'rxjs';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -28,31 +24,14 @@ export class NavbarComponent implements AfterViewInit {
 
 
   constructor (
-    private filmeService: FilmeService,
     private renderer: Renderer2,
-    private cdref: ChangeDetectorRef,
     private elementRef: ElementRef,
-    private buscaRealizada: BuscaRealizadaService,
     private router: Router
   ) {
     this.maximoPaginasAlcancado = false;
   }
 
-  ngOnInit(): void {
-    this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd)
-      )
-      .subscribe((event: NavigationEnd) => {
-        if (event.url !== '/filmes') {
-          this.limparPesquisa();
-        }
-      });
-  }
-
   ngAfterViewInit() {
-    this.cdref.detectChanges();
-
     this.renderer.listen('document', 'click', (event: Event) => {
       const clickedBotao = this.elementRef.nativeElement.querySelector('#btn-adicionar')?.contains(event.target);
       const clickedLupa = this.elementRef.nativeElement.querySelector('#btn-pesquisar')?.contains(event.target);
@@ -86,64 +65,14 @@ export class NavbarComponent implements AfterViewInit {
     this.pesquisaVisivel = false;
   }
 
-  pesquisarFilme( busca: string, pagina: number = 1 ) {
-    if (this.buscaRealizada != undefined) {
-      this.resultadoBusca == undefined;
+  pesquisarFilme( busca: string ) {
+    if (this.router.url.startsWith('/busca')) {
+      this.router.navigate(['/busca', busca])
+        .then(() => {
+          window.location.reload();
+        });
+    } else {
+      this.router.navigate(['/busca', busca]);
     }
-
-    this.router.navigate(['/busca']);
-
-    this.buscaRealizada.atualizarResultadoBusca(busca.length > 1);
-
-    if (busca.length < 1) return;
-
-    this.maximoPaginasAlcancado = false;
-
-    this.filmeService.pesquisarFilmes(busca, pagina).subscribe((res) => {
-      const novoResultado = this.mapearResultadoBusca(res);
-
-      if (this.resultadoBusca == undefined) {
-        this.resultadoBusca = novoResultado;
-
-        if (pagina >= novoResultado.quantidadePaginas) {
-          this.maximoPaginasAlcancado = true;
-        }
-        this.resultadoBusca.pagina = novoResultado.pagina;
-      }
-      else {
-        if (pagina >= this.resultadoBusca.quantidadePaginas) {
-          this.maximoPaginasAlcancado = true;
-        }
-        this.resultadoBusca.pagina = novoResultado.pagina;
-        this.resultadoBusca.filmes.push(...novoResultado.filmes);
-      }
-    });
-
-    if (busca) {
-      this.onBuscar.emit(busca);
-    }
-  }
-
-  public limparPesquisa () {
-    this.resultadoBusca = undefined;
-  }
-
-  private mapearResultadoBusca(obj: any): ResultadoBusca {
-    return {
-      pagina: obj.page,
-      quantidadePaginas: obj.total_pages,
-      quantidadeResultados: obj.total_results,
-      filmes: obj.results.map(this.mapearListagemFilme),
-    };
-  }
-
-  private mapearListagemFilme(obj: any): Filme {
-    return {
-      id: obj.id,
-      titulo: obj.title,
-      lancamento: formatDate(obj.release_date, 'mediumDate', 'pt-BR'),
-      urlImagem: 'https://image.tmdb.org/t/p/w300/' + obj.poster_path,
-      porcentagemNota: (obj.vote_average * 10).toFixed(0),
-    };
   }
 }
