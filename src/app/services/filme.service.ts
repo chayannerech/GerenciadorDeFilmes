@@ -12,8 +12,18 @@ export class FilmeService {
 
   constructor(private http: HttpClient) {}
 
-  public selecionarFilmesPopulares(): Observable<any>{
-    const urlCompleto = `${this.urlApi}/popular?language=pt-BR`;
+  public selecionarFilmesPopulares(pagina:number): Observable<any> {
+    const urlCompleto = `${this.urlApi}/popular?page=${pagina}&language=pt-BR`;
+
+    return this.http.get<any>(urlCompleto, this.obterHeadersDeAutorizacao());
+  }
+
+  public selecionarDetalhesPorUrl(url: string): Observable<any> {
+    return this.http.get<any>(url);
+  }
+
+  public selecionarDetalhesFilmePorId(id: any): Observable<any> {
+    const urlCompleto = `${this.urlApi}/${id}?append_to_response=videos,credits&language=pt-BR`;
 
     return this.http.get<any>(urlCompleto, this.obterHeadersDeAutorizacao());
   }
@@ -23,8 +33,13 @@ export class FilmeService {
       method: 'GET',
       headers: {
         accept: 'application/json',
-        Autorization: environment.API_KEY,
+        Authorization: environment.API_KEY,
       }
     }
+  }
+
+  public pesquisarFilmes(query: string, pagina: number = 1): Observable<any> {
+    const urlCompleto = `https://api.themoviedb.org/3/search/movie?query=${query}&page=${pagina}&language=pt-BR`;
+    return this.http.get<any>(urlCompleto, this.obterHeadersDeAutorizacao());
   }
 }

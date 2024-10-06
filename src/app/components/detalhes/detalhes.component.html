@@ -1,0 +1,95 @@
+<div *ngIf="detalhes">
+    <main class="container py-5">
+      <section aria-label="Detalhes do Filme" class="row g-3">
+        <div class="app-detalhes-poster col-md-4 col-lg-3 justify-content-center">
+          <img
+            [src]="detalhes.urlPoster"
+            alt="Poster de {{ detalhes.titulo }}"
+            class="img-fluid rounded-3"
+          />
+        </div>
+
+        <div class="app-detalhes-informacoes col-md-8 col-lg-9">
+          <header class="text-center">
+            <div class="app-row-titulo ms-4">
+              <h1 class="app-detalhes-titulo ">{{ detalhes.titulo }}</h1>
+              <button
+                *ngIf="!detalhes.favorito"
+                (click)="alterarStatusFavorito(detalhes.id)"
+                title="Favoritar"
+                class="btn app-btn-favoritar"
+              >
+                <i class="bi bi-star text-secondary fs-3"></i>
+              </button>
+              <button
+                *ngIf="detalhes.favorito"
+                (click)="alterarStatusFavorito(detalhes.id)"
+                title="Remover favorito"
+                class="btn app-btn-favoritar"
+              >
+                <i class="bi bi-star-fill text-secondary fs-3"></i>
+              </button>
+            </div>
+            <div class="d-flex justify-content-center ">
+              <span class="d-flex align-items-center gap-1">
+                •
+                <span>{{ detalhes.generos }}</span>
+                •
+              </span>
+            </div>
+
+            <div>
+              <small>{{ detalhes.lancamento }}</small>
+            </div>
+
+            <article class="mt-5">
+              <h4>Sinopse</h4>
+              <p class="app-detalhes-sinopse">
+                {{ detalhes.sinopse }}
+              </p>
+            </article>
+
+            <div class="app-detalhes-avaliacao">
+              <span
+                [ngClass]="mapearCorDaNota(detalhes.porcentagemNota)"
+                class="app-porcentagem-nota"
+              >
+                <span class="app-valor-porcentagem fw-semibold">{{ detalhes.porcentagemNota }}</span>
+              </span>
+              <strong>Avaliação dos Usuários</strong>
+            </div>
+          </header>
+        </div>
+
+        <div *ngIf="detalhes.videos.length > 0">
+          <article class="ratio ratio-16x9 mt-5">
+            <iframe
+              [attr.aria-label]="'Trailer de ' + detalhes.titulo"
+              [src]="detalhes.videos[0].sourceUrl"
+              title="Trailer"
+              type="video/mp4"
+              class="rounded-3"
+            ></iframe>
+          </article>
+        </div>
+      </section>
+    </main>
+    <section class="container my-4">
+      <h4 class="text-light fw-normal">Elenco Principal</h4>
+      <div id="elenco-scroll" class="row flex-nowrap overflow-x-scroll g-2 pb-3 mt-3">
+        <div *ngFor="let membro of detalhes?.elencoPrincipal" class="app-config-col col-md-3 col-lg-2">
+          <app-elenco-principal
+            [membro]="membro"
+          ></app-elenco-principal>
+        </div>
+      </div>
+    </section>
+
+    <section class="d-flex justify-content-center mt-3">
+      <button
+      (click)="retornarPaginaPrincipal()"
+      class="app-btn-voltar">
+        <i class="bi bi-arrow-return-left"></i>
+      </button>
+    </section>
+</div>

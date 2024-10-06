@@ -1,0 +1,188 @@
+.app-row-titulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.app-detalhes-titulo {
+  background: linear-gradient(90deg, #ff7a18, #ff7a18, #f1013d, #2888d6d5, #2888d6);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 0;
+  margin-left: 3%;
+}
+
+.app-detalhes-informacoes {
+  display: flex;
+  color:rgb(185, 185, 185);
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-detalhes-avaliacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+  margin-top: 5%;
+}
+
+.app-detalhes-sinopse {
+  text-align: justify;
+  max-width: 90%;
+  margin: 0 auto;
+  font-size: 94%;
+}
+
+// #region Elenco
+#elenco-scroll {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #dddddd;
+    border-radius: 5px;
+  }
+}
+// #endregion
+
+// #region Avaliação
+.app-porcentagem-nota {
+  background-color: #081c22;
+  color: #f3f3f3;
+
+  width: 50px;
+  height: 48px;
+
+  border: 2px solid transparent;
+  border-radius: 50%;
+  animation: preencherBorda 1.3s linear forwards;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+
+  .app-valor-porcentagem {
+    font-size: 20px;
+
+    &::after {
+      content: "%";
+      font-size: 9px;
+    }
+  }
+}
+
+@keyframes preencherBorda {
+  0% {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  25% {
+    border-top-color: currentColor;
+  }
+  50% {
+    border-right-color: currentColor;
+  }
+  75% {
+    border-bottom-color: currentColor;
+  }
+  100% {
+    border-left-color: currentColor;
+  }
+}
+
+.app-borda-nota-mais-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-media {
+  border-color: #ffed23;
+}
+
+.app-borda-nota-alta {
+  border-color: rgb(0, 196, 0);
+}
+// #endregion
+
+// #region Reponsividade
+@media (width > 1399px) {
+  .app-detalhes-titulo {
+    font-size: 260%;
+  }
+}
+
+@media (width < 1400px) {
+  .app-detalhes-titulo {
+    font-size: 250%;
+  }
+}
+
+@media (width < 992px) {
+  .app-detalhes-titulo {
+    font-size: 215%;
+  }
+}
+
+@media (width < 450px) {
+  .app-detalhes-titulo {
+    font-size: 170%;
+  }
+}
+
+@media (width < 768px) {
+  .app-row-titulo {
+    display: inline;
+  }
+
+  .app-detalhes-titulo {
+    margin-left: 0;
+  }
+
+  .app-btn-favoritar {
+    margin-left: 0;
+  }
+  .app-detalhes-poster {
+    display: flex;
+  }
+  .app-config-col {
+    width: 30%;
+  }
+}
+// #endregion
+
+// #region Botões
+.app-btn-favoritar {
+  border: 0;
+  padding: 0;
+  margin-left: 3%;
+}
+
+.app-btn-voltar {
+  margin-top: 2%;
+  border-color: #ffffffa8;
+  background: linear-gradient(0deg, #6458705d, #393b3d5d);
+  color: white;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 120%;
+  width: 200px;
+  margin-bottom: 40px;
+}
+
+.app-btn-voltar:hover {
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+}
+// #endregion

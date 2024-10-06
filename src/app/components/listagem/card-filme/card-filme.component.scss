@@ -1,0 +1,99 @@
+.app-card-filme {
+  position: relative;
+  border: none;
+  --bs-card-spacer-y: 0.5rem;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.app-card-filme:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 15px rgba(0, 0, 0, 0.3);
+}
+
+.app-card-filme:hover .app-titulo-card {
+  color: #6c20c2;
+}
+
+.app-titulo-card {
+  transition: color 0.3s ease;
+  font-size: 90%;
+  font-weight:600;
+  margin-bottom: 0;
+}
+
+.app-subtitulo-card {
+  color: gray;
+  font-size: 75%;
+}
+
+//#region Avaliação
+.app-porcentagem-nota {
+  background-color: #081c22;
+  color: #f3f3f3;
+  box-shadow: 0 0 3px 3px rgb(0, 0, 0);
+
+  width: 33px;
+  height: 33px;
+
+  position: absolute;
+  top: 1.5%;
+  right: 2%;
+
+  border: 2px solid transparent;
+  border-radius: 50%;
+  animation: preencherBorda 1.5s linear forwards;
+
+  .app-valor-porcentagem {
+    position: absolute;
+    top: 12%;
+    left: 18%;
+    font-size: 70%;
+  }
+
+  .app-icone-porcentagem {
+    position: absolute;
+    bottom: 15%;
+    right: 8%;
+    font-size: 54%;
+  }
+}
+
+@keyframes preencherBorda {
+  0% {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+  25% {
+    border-top-color: currentColor;
+  }
+  50% {
+    border-right-color: currentColor;
+  }
+  75% {
+    border-bottom-color: currentColor;
+  }
+  100% {
+    border-left-color: currentColor;
+  }
+}
+
+.app-borda-nota-mais-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-baixa {
+  border-color: #f62424;
+}
+
+.app-borda-nota-media {
+  border-color: #ffed23;
+}
+
+.app-borda-nota-alta {
+  border-color: rgb(0, 196, 0);
+}
+//#endregion

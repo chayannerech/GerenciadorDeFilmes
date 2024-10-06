@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons";
+@import "ngx-toastr/toastr-bs5-alert";
+
+body {
+  background: -webkit-linear-gradient(to right, #faf3f4, #c2c2fb);
+  background: linear-gradient(to top, #3c274ebe, #212529ce, #212529e5, #212529, #212529);
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0;
+}

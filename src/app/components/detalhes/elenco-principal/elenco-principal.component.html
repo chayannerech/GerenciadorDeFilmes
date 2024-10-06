@@ -1,0 +1,12 @@
+<div class="card app-card-elenco rounded-3 h-100">
+  <img
+    class="card-img-top"
+    title="Elenco"
+    [src]="membro?.urlImagem"
+    [alt]="membro?.nome"
+  />
+  <div class="card-body px-2">
+    <p class="card-title fw-semibold mb-0">{{ membro?.nome }}</p>
+    <small class="text-secondary text-wrap">{{ membro?.papel }}</small>
+  </div>
+</div>
