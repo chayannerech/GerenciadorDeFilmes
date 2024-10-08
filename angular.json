@@ -105,7 +105,9 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-          "repo": "https://github.com/chayannerech/GerenciadorDeFilmes"
+          "repo": "https://github.com/chayannerech/GerenciadorDeFilmes",
+          "outputPath": "dist/GerenciadorDeFilmes",
+          "baseHref": "/GerenciadorDeFilmes/"
         }
         }
       }

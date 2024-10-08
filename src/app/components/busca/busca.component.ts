@@ -68,10 +68,17 @@ export class BuscaComponent {
   }
 
   private mapearListagemFilme(obj: any): Filme {
+    let lancamento: string;
+
+    if (obj.release_date == "")
+      lancamento = "não informado";
+    else
+      lancamento = formatDate(obj.release_date, 'mediumDate', 'pt-BR');
+
     return {
       id: obj.id,
       titulo: obj.title,
-      lancamento: formatDate(obj.release_date, 'mediumDate', 'pt-BR'),
+      lancamento: lancamento,
       urlImagem: 'https://image.tmdb.org/t/p/w300/' + obj.poster_path,
       porcentagemNota: (obj.vote_average * 10).toFixed(0),
     };

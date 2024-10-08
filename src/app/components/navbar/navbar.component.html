@@ -5,15 +5,33 @@
 			<span class="app-texto-navbar fw-bold mx-4">MDB</span>
 		</a>
 
-		<button
-			class="navbar-toggler text-white border-white"
-			type="button"
-			data-bs-toggle="collapse"
-			data-bs-target="#navbarNavAltMarkup"
-			aria-controls="navbarNavAltMarkup"
-			aria-expanded="false"
-			aria-label="Toggle navigation"
-		> &#9776; </button>
+    <button
+      class="navbar-toggler text-white border-white"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="mostrarMenuNavbar = !mostrarMenuNavbar"
+    > &#9776; </button>
+
+    <div
+      [style.display]="mostrarMenuNavbar ? 'block' : 'none'"
+      class="navbar-collapse collapse"
+      id="navbarNavAltMarkup"
+    >
+      <div class="app-barra-pesquisa-toggler">
+        <input
+          [style.display]="mostrarMenuNavbar ? 'block' : 'none'"
+          #pesquisarToggle
+          (keydown.enter)="pesquisarFilme(pesquisarToggle.value)"
+          type="text"
+          class="app-input-pesquisa form-control"
+          placeholder="Pesquisar filme..."
+        />
+      </div>
+    </div>
 
 		<div class="navbar-collapse collapse" id="navbarNavAltMarkup">
 			<div class="app-nav-itens d-flex align-items-center">
@@ -50,8 +68,8 @@
           </button>
 
           <div
-            [ngClass]="{'show': pesquisaVisivel}"
-            class="app-barra-pesquisa"
+          [style.display]="pesquisaVisivel ? 'block' : 'none'"
+          class="app-barra-pesquisa"
           >
             <input
               #pesquisar

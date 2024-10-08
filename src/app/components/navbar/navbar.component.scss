@@ -99,6 +99,24 @@ select {
     transform: translateY(0);
   }
 }
+
+.app-barra-pesquisa-toggler {
+  background-color: transparent;
+  z-index: 1000;
+  margin: 4% 0;
+}
+
+.app-barra-pesquisa-toggler input{
+  background-color: transparent;
+  text-align: center;
+  border-radius: 5px;
+  border-color: white;
+  color: #ccc;
+}
+
+.app-barra-pesquisa-toggler input::placeholder{
+  color: #ccc;
+}
 //#endregion
 
 //#region Perfil

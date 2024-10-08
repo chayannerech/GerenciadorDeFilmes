@@ -1,6 +1,6 @@
 <div *ngIf="resultadoBusca!.filmes.length > 0" class="row">
   <div
-    class="app-resultados-busca">
+    class="app-sem-resultados">
     <div class="app-titulo">
       <h4 class="app-texto-resultados">Resultados da busca</h4>
     </div>
@@ -30,11 +30,8 @@
       </div>
     </div>
 
-    <section
-      aria-label="Paginação"
-      class="d-flex justify-content-center mt-3 gap-3"
-    >
-      <button class="app-btn-voltar"
+    <section aria-label="Paginação" class="app-botoes-busca">
+      <button class="app-btn-voltar text-center"
         (click)="retornarPaginaPrincipal()"
       >
         <i class="bi bi-arrow-return-left"></i>
@@ -51,27 +48,27 @@
   </div>
 </div>
 
-<div *ngIf="resultadoBusca!.filmes.length == 0" class="row">
-  <div
-    class="app-resultados-busca">
+<div *ngIf="resultadoBusca!.filmes.length == 0" class="row app-sem-resultados">
     <div class="app-titulo">
       <h4 class="app-texto-resultados">Resultados da busca</h4>
     </div>
-    <div class="app-nao-encontrado">
+
+    <div class="app-boneco-triste">
       <img
       src="boneco-triste-2.png"
       alt="Busca não encontrada"
-      class="img-fluid rounded-3"
+      class="img-fluid"
       />
     </div>
 
-    <h3 class="text-center mt-5">Lamentamos :( </h3>
-    <h5 class="text-center mt-2 mb-4 px-4">Não encontramos nenhum filme ou série com este título</h5>
+    <div>
+      <p class="app-texto-sem-resultado">Lamentamos :( </p>
+      <p class="app-texto-sem-resultado-2">Não encontramos nenhum filme ou série com este título</p>
+    </div>
 
     <button class="app-btn-voltar"
       (click)="retornarPaginaPrincipal()"
     >
       <i class="bi bi-arrow-return-left"></i>
     </button>
-  </div>
 </div>

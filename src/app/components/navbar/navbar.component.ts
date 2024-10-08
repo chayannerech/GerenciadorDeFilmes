@@ -1,23 +1,22 @@
-import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, ElementRef, ViewChild, AfterViewInit, Renderer2, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
-import { BuscaComponent } from "../busca/busca.component";
 import { ResultadoBusca } from '../../models/busca';
-import { Router, RouterLink } from '@angular/router';
+import { Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [NgIf, NgFor, NgClass, BuscaComponent, RouterLink],
+  imports: [],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 
 export class NavbarComponent implements AfterViewInit {
-  public seletorVisivel = false;
-  public pesquisaVisivel: boolean = false;
+  public seletorVisivel: boolean;
+  public pesquisaVisivel: boolean;
   public maximoPaginasAlcancado: boolean;
   public resultadoBusca?: ResultadoBusca;
+  public mostrarMenuNavbar: boolean;
 
   @ViewChild('adicionar', { static: false }) adicionar!: ElementRef;
   @ViewChild('pesquisar', { static: false }) pesquisar!: ElementRef;
@@ -30,7 +29,10 @@ export class NavbarComponent implements AfterViewInit {
     private router: Router,
     private toastrService: ToastrService
   ) {
+    this.seletorVisivel = false;
+    this.pesquisaVisivel = false;
     this.maximoPaginasAlcancado = false;
+    this.mostrarMenuNavbar = false;
   }
 
   ngAfterViewInit() {
@@ -73,7 +75,6 @@ export class NavbarComponent implements AfterViewInit {
         'Informe o título que deseja buscar',
         'Aviso'
       )
-
       return;
     }
 
@@ -84,6 +85,7 @@ export class NavbarComponent implements AfterViewInit {
         });
     } else {
       this.router.navigate(['/busca', busca]);
+      this.mostrarMenuNavbar = false;
     }
   }
 }
