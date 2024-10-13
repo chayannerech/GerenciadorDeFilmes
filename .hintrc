@@ -6,7 +6,9 @@
     "axe/name-role-value": [
       "default",
       {
-        "button-name": "off"
+        "button-name": "off",
+        "frame-title": "off",
+        "image-alt": "off"
       }
     ]
   }

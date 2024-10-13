@@ -22,7 +22,7 @@ export class ListagemComponent implements OnInit{
   public filmesFavoritos: FilmeFavorito[];
   public carregandoListagem: boolean;
   private pagina: number;
-  buscaRealizada: boolean = false;
+  public buscaRealizada: boolean;
 
   constructor( private filmeApiService: FilmeService, private localStorageService: LocalStorageService, private buscaRealizadaService: BuscaRealizadaService )
   {
@@ -30,6 +30,7 @@ export class ListagemComponent implements OnInit{
     this.filmesFavoritos = [];
     this.pagina = 1;
     this.carregandoListagem = false;
+    this.buscaRealizada = false;
   }
 
   ngOnInit(): void {
